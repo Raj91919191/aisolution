@@ -1,0 +1,390 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base typography for cleaner look */
+@layer base {
+  html { 
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, "Apple Color Emoji", "Segoe UI Emoji";
+    /* Enable hardware acceleration for better performance */
+    transform: translateZ(0);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  body {
+    /* Improve scroll performance */
+    scroll-behavior: smooth;
+    /* Prevent layout shifts */
+    overflow-x: hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 { 
+    @apply tracking-tight;
+    /* Enable subpixel rendering for crisp text */
+    text-rendering: optimizeLegibility;
+  }
+  
+  p { 
+    @apply leading-relaxed;
+    text-rendering: optimizeSpeed;
+  }
+  
+  /* Performance optimizations for animations */
+  * {
+    /* Use hardware acceleration for transforms */
+    will-change: auto;
+  }
+}
+
+/* Layout container utility */
+@layer components {
+  .container-padded { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8; }
+  
+  /* Enhanced smooth transitions with hardware acceleration */
+  .btn-smooth { 
+    @apply transition-all duration-200 ease-out;
+    transform: translateZ(0);
+    will-change: transform, opacity;
+  }
+  
+  .link-smooth { 
+    @apply transition-colors duration-150 ease-out;
+    will-change: color;
+  }
+  
+  .card-hover { 
+    @apply transition-transform duration-300 ease-out hover:scale-[1.02] hover:-translate-y-0.5;
+    transform: translateZ(0);
+    will-change: transform;
+  }
+  
+  /* Performance-optimized loading spinner */
+  .spinner {
+    animation: spin 1s linear infinite;
+    will-change: transform;
+  }
+  
+  /* Smooth gradient animations */
+  .gradient-animate {
+    background-size: 200% 200%;
+    animation: gradientShift 6s ease infinite;
+    will-change: background-position;
+  }
+  
+  /* Enhanced bubble container for better performance */
+  .bubble-container {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+    /* Hardware acceleration for the container */
+    transform: translateZ(0);
+    will-change: transform;
+  }
+}
+
+/* Custom animations */
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+  
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+  
+  .animate-fade-in-down {
+    animation: fadeInDown 0.6s ease-out forwards;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.8s ease-out forwards;
+  }
+  
+  .animate-bounce-in {
+    animation: bounceIn 0.8s ease-out forwards;
+  }
+  
+  .animate-slideDown {
+    animation: slideDown 0.3s ease-out forwards;
+  }
+  
+  .animate-gradient-x {
+    background-size: 200% 200%;
+    animation: gradientX 3s ease infinite;
+  }
+  
+  .animate-shimmer {
+    background: linear-gradient(90deg, #22d3ee, #0ea5e9, #22d3ee);
+    background-size: 200% 100%;
+    animation: shimmer 2s linear infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  /* Enhanced water bubble animations with advanced visual effects */
+  .bubble-blue { 
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.8) 0%, rgba(56, 189, 248, 0.1) 70%); 
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+  }
+  .bubble-cyan { 
+    background: radial-gradient(circle, rgba(34, 211, 238, 0.8) 0%, rgba(34, 211, 238, 0.1) 70%); 
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
+  }
+  .bubble-indigo { 
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.8) 0%, rgba(99, 102, 241, 0.1) 70%); 
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+  }
+  .bubble-purple { 
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.8) 0%, rgba(139, 92, 246, 0.1) 70%); 
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+  }
+  .bubble-pink { 
+    background: radial-gradient(circle, rgba(236, 72, 153, 0.8) 0%, rgba(236, 72, 153, 0.1) 70%); 
+    box-shadow: 0 0 20px rgba(236, 72, 153, 0.3);
+  }
+  .bubble-teal { 
+    background: radial-gradient(circle, rgba(20, 184, 166, 0.8) 0%, rgba(20, 184, 166, 0.1) 70%); 
+    box-shadow: 0 0 20px rgba(20, 184, 166, 0.3);
+  }
+}
+
+/* Keyframe animations */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    max-height: 0;
+    opacity: 0;
+  }
+  to {
+    max-height: 500px;
+    opacity: 1;
+  }
+}
+
+@keyframes gradientX {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Advanced water bubble animations with performance optimizations */
+@keyframes bubbleFloat {
+  0% {
+    transform: translateY(0) translateX(0) scale(0.8);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(var(--drift, 0)) scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* Enhanced bubble sway effect for natural movement */
+@keyframes bubbleSway {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(var(--sway-distance, 10px)) translateY(-5px);
+  }
+  50% {
+    transform: translateX(0) translateY(-10px);
+  }
+  75% {
+    transform: translateX(calc(var(--sway-distance, 10px) * -1)) translateY(-5px);
+  }
+}
+
+/* Advanced bubble pulsing effect */
+@keyframes bubblePulse {
+  0%, 100% {
+    transform: scale(1) rotate(var(--rotation, 0));
+  }
+  50% {
+    transform: scale(1.1) rotate(var(--rotation, 0));
+  }
+}
+
+/* Performance-optimized bubble container */
+.bubble-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  /* Hardware acceleration for the container */
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Simple bubble animation for footer */
+@keyframes float {
+  0% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-20px) translateX(10px);
+  }
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+}
+
+.animate-bubble {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Respect reduced motion for performance and accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .btn-smooth, .link-smooth, .card-hover { 
+    transition: none !important;
+    animation: none !important;
+  }
+  
+  .gradient-animate {
+    animation: none !important;
+    background-size: 100% 100% !important;
+  }
+  
+  /* Disable custom animations */
+  .animate-fade-in,
+  .animate-fade-in-up,
+  .animate-fade-in-down,
+  .animate-slide-up,
+  .animate-bounce-in,
+  .animate-slideDown,
+  .animate-gradient-x,
+  .animate-shimmer,
+  .animate-bubble,
+  .bubble-container {
+    animation: none !important;
+  }
+  
+  /* Disable bubble container */
+  .bubble-container {
+    display: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .gradient-animate {
+    background: linear-gradient(45deg, #ffffff, #e5e5e5) !important;
+  }
+  
+  /* Simplify bubbles for high contrast */
+  .bubble-blue, .bubble-cyan, .bubble-indigo, .bubble-purple, .bubble-pink, .bubble-teal {
+    background: transparent !important;
+    border: 1px solid white;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  /* Hide bubbles when printing */
+  .bubble-container {
+    display: none;
+  }
+}
